@@ -19,7 +19,7 @@ export default function Navbar() {
         <nav className="bg-lightPurple p-4">
             <ul className="flex justify-center space-x-8 items-center">
                 <li>
-                    <Link href="/admin/dashboard">
+                    <Link href="/user/dashboard">
                         <div className="bg-purple-200 text-purple-600 hover:bg-purple-300 px-4 py-2 rounded-md text-center uppercase font-bold transition">
                             Dashboard
                         </div>
