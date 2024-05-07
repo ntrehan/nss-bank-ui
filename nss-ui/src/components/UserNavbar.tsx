@@ -1,4 +1,4 @@
-// src/components/Navbar.tsx
+// src/components/UserNavbar.tsx
 "use client";
 import Link from 'next/link';
 import { useRouter } from 'next/navigation'; // Import the router for redirection
@@ -9,6 +9,7 @@ export default function Navbar() {
     const handleLogout = () => {
         // Clear the JWT token from local storage
         localStorage.removeItem('jwtToken');
+        localStorage.removeItem('customerId');
 
         // Redirect to the home page
         router.push('/');
@@ -25,23 +26,30 @@ export default function Navbar() {
                     </Link>
                 </li>
                 <li>
-                    <Link href="/admin/customers">
+                    <Link href="/user/checking">
                         <div className="bg-purple-200 text-purple-600 hover:bg-purple-300 px-4 py-2 rounded-md text-center uppercase font-bold transition">
-                            Customers
+                            Checking
                         </div>
                     </Link>
                 </li>
                 <li>
-                    <Link href="/admin/accounts">
+                    <Link href="/user/saving">
                         <div className="bg-purple-200 text-purple-600 hover:bg-purple-300 px-4 py-2 rounded-md text-center uppercase font-bold transition">
-                            Accounts
+                            Saving
                         </div>
                     </Link>
                 </li>
                 <li>
-                    <Link href="/admin/institutes">
+                    <Link href="/user/home-loan">
                         <div className="bg-purple-200 text-purple-600 hover:bg-purple-300 px-4 py-2 rounded-md text-center uppercase font-bold transition">
-                            Institutes
+                            Home Loan
+                        </div>
+                    </Link>
+                </li>
+                <li>
+                    <Link href="/user/student-loan">
+                        <div className="bg-purple-200 text-purple-600 hover:bg-purple-300 px-4 py-2 rounded-md text-center uppercase font-bold transition">
+                            Student Loan
                         </div>
                     </Link>
                 </li>

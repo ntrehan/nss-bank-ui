@@ -3,11 +3,14 @@
 "use client";
 
 import { useState } from 'react';
-import { signupAdmin } from '../../../services/authService';
+import { signupCustomer } from '../../../services/userAuthService';
 
 export default function AdminSignup() {
     const [name, setName] = useState('');
-    const [email, setEmail] = useState('');
+    const [street, setStreet] = useState('');
+    const [city, setCity] = useState('');
+    const [state, setState] = useState('');
+    const [zipCode, setZipCode] = useState('');
     const [password, setPassword] = useState('');
     const [message, setMessage] = useState('');
     const [username, setUsername] = useState('');
@@ -15,7 +18,7 @@ export default function AdminSignup() {
     const handleSignup = async (e: React.FormEvent) => {
         e.preventDefault();
         try {
-            const result = await signupAdmin(name, password, email);
+            const result = await signupCustomer(name, street,city,state,zipCode,password);
             setUsername(result); // Store the generated username
             setMessage(`Your account is successfully created and your username is ${result}`);
         } catch (error) {
@@ -38,11 +41,38 @@ export default function AdminSignup() {
                         />
                     </div>
                     <div>
-                        <label className="block text-sm font-medium text-gray-700">Email</label>
+                        <label className="block text-sm font-medium text-gray-700">Street</label>
                         <input
-                            type="email"
-                            value={email}
-                            onChange={(e) => setEmail(e.target.value)}
+                            type="text"
+                            value={street}
+                            onChange={(e) => setStreet(e.target.value)}
+                            className="mt-1 block w-full px-3 py-2 border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-lightPurple focus:border-lightPurple sm:text-sm"
+                        />
+                    </div>
+                    <div>
+                        <label className="block text-sm font-medium text-gray-700">City</label>
+                        <input
+                            type="text"
+                            value={city}
+                            onChange={(e) => setCity(e.target.value)}
+                            className="mt-1 block w-full px-3 py-2 border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-lightPurple focus:border-lightPurple sm:text-sm"
+                        />
+                    </div>
+                    <div>
+                        <label className="block text-sm font-medium text-gray-700">State</label>
+                        <input
+                            type="text"
+                            value={state}
+                            onChange={(e) => setState(e.target.value)}
+                            className="mt-1 block w-full px-3 py-2 border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-lightPurple focus:border-lightPurple sm:text-sm"
+                        />
+                    </div>
+                    <div>
+                        <label className="block text-sm font-medium text-gray-700">ZipCode</label>
+                        <input
+                            type="number"
+                            value={zipCode}
+                            onChange={(e) => setZipCode(e.target.value)}
                             className="mt-1 block w-full px-3 py-2 border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-lightPurple focus:border-lightPurple sm:text-sm"
                         />
                     </div>
@@ -64,7 +94,7 @@ export default function AdminSignup() {
                 </form>
                 {message && <p className="mt-4 text-red-600 text-center">{message}</p>}
                 <p className="mt-4 text-center">
-                    Already have an account? <a href="/admin" className="text-purple-500 hover:text-purple-700 hover:underline">Login here</a>
+                    Already have an account? <a href="/user" className="text-purple-500 hover:text-purple-700 hover:underline">Login here</a>
                 </p>
             </div>
         </div>

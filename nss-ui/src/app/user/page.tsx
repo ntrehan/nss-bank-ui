@@ -4,7 +4,7 @@
 
 import { useState } from 'react';
 import { useRouter } from 'next/navigation';
-import { loginAdmin } from '../../services/authService';
+import { loginCustomer } from '../../services/userAuthService';
 
 export default function AdminLogin() {
     const [username, setUsername] = useState('');
@@ -15,13 +15,9 @@ export default function AdminLogin() {
     const handleLogin = async (e: React.FormEvent) => {
         e.preventDefault();
         try {
-            const token = await loginAdmin(username, password);
+            const token = await loginCustomer(username, password);
 
-            // Save the token in local storage
-            localStorage.setItem('jwtToken', token);
-
-            // Redirect to a safe page (change this to the appropriate path later)
-            router.push('/admin/dashboard');
+            router.push('/user/dashboard');
         } catch (error) {
             setMessage('Login failed. Please try again.');
         }
@@ -30,7 +26,7 @@ export default function AdminLogin() {
     return (
         <div className="min-h-screen flex items-center justify-center bg-lightPurple">
             <div className="p-8 rounded-lg shadow-lg bg-white max-w-md w-full">
-                <h1 className="text-2xl font-bold text-center mb-6">Admin Login</h1>
+                <h1 className="text-2xl font-bold text-center mb-6">User Login</h1>
                 <form onSubmit={handleLogin} className="space-y-4">
                     <div>
                         <label className="block text-sm font-medium text-gray-700">Username</label>
@@ -61,7 +57,7 @@ export default function AdminLogin() {
                 </form>
                 {message && <p className="mt-4 text-red-600 text-center">{message}</p>}
                 <p className="mt-4 text-center">
-                    Don't have an account? <a href="/admin/signup" className="text-purple-500 hover:text-purple-700 hover:underline">Sign up here</a>
+                    Don't have an account? <a href="/user/signup" className="text-purple-500 hover:text-purple-700 hover:underline">Sign up here</a>
                 </p>
             </div>
         </div>

@@ -2,7 +2,10 @@
 "use client";
 import { useState, useEffect } from 'react';
 import Layout from '../../../components/Layout';
-import { getNumberOfCustomers, getNumberOfInstitutes, getAccountsDistribution } from '../../../services/statsService';
+import { getNumberOfInstitutes } from '../../../services/instituteService';
+import { getNumberOfCustomers } from '../../../services/adminCustomerService';
+
+import {getAccountsDistribution} from '../../../services/statsService'
 import {
     Chart as ChartJS,
     ArcElement,

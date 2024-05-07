@@ -1,6 +1,6 @@
 import axios from 'axios';
 
-const API_BASE_URL = 'http://localhost:8080/api/saving-accounts';
+const API_BASE_URL = 'http://localhost:8080/savings';
 
 export const getAllSavingAccounts = async () => {
     try {
