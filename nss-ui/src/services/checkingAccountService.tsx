@@ -1,6 +1,6 @@
 import axios from 'axios';
 
-const API_BASE_URL = 'http://localhost:8080/api/checking-accounts';
+const API_BASE_URL = 'http://localhost:8080/checking';
 
 export const getAllCheckingAccounts = async () => {
     try {
@@ -11,3 +11,4 @@ export const getAllCheckingAccounts = async () => {
         return [];
     }
 };
+

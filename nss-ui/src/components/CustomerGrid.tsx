@@ -2,7 +2,8 @@
 "use client";
 
 import { useState, useEffect } from 'react';
-import { getAllCustomers, deleteCustomer as deleteCustomerService } from '../services/customerService';
+import { getAllCustomers } from '../services/adminCustomerService.tsx';
+import { deleteCustomer as deleteCustomerService } from '../services/customerService';
 import { AiOutlineDelete } from 'react-icons/ai';
 import ConfirmationDialog from './ConfirmationDialog'; // Import the new component
 

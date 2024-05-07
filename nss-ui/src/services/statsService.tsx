@@ -1,7 +1,7 @@
 // src/services/statsService.ts
 import axios from 'axios';
 
-const API_BASE_URL = 'http://localhost:8080/api';
+const API_BASE_URL = 'http://localhost:8080';
 
 export const getNumberOfCustomers = async () => {
     const response = await axios.get(`${API_BASE_URL}/customers`);
@@ -14,10 +14,10 @@ export const getNumberOfInstitutes = async () => {
 };
 
 export const getAccountsDistribution = async () => {
-    const checkingResponse = await axios.get(`${API_BASE_URL}/checking-accounts`);
-    const savingResponse = await axios.get(`${API_BASE_URL}/saving-accounts`);
-    const homeLoanResponse = await axios.get(`${API_BASE_URL}/home-loan-accounts`);
-    const studentLoanResponse = await axios.get(`${API_BASE_URL}/student-loan-accounts`);
+    const checkingResponse = await axios.get(`${API_BASE_URL}/checking`);
+    const savingResponse = await axios.get(`${API_BASE_URL}/savings`);
+    const homeLoanResponse = await axios.get(`${API_BASE_URL}/api/home-loan-accounts`);
+    const studentLoanResponse = await axios.get(`${API_BASE_URL}/api/student-loan-accounts`);
 
     return {
         total: checkingResponse.data.length + savingResponse.data.length + homeLoanResponse.data.length + studentLoanResponse.data.length,
